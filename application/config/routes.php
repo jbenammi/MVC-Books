@@ -38,21 +38,23 @@
 |
 */
 
-$route['default_controller'] = "Dashboards";
-$route['signin'] = "Dashboards/sign_in";
-$route['process_signin'] = "Dashboards/signin_process";
-$route['admin_dashboard'] = "Dashboards/view_admin_dash";
-$route['user_dashboard'] = "Dashboards/view_user_dash";
-$route['register'] = "Dashboards/registration";
-$route['edit_profile_info'] = "Dashboards/edit_profile_info";
-$route['profile/(:num)'] = "Dashboards/view_profile/$1";
-$route['view_user/(:num)'] = "Dashboards/view_user/$1";
-$route['view_user_admin/(:num)'] = "Dashboards/view_user_admin/$1";
-$route['edit_user'] = "Dashboards/edit_user";
-$route['add_user'] = "Dashboards/add_user";
-$route['remove/(:num)'] = "Dashboards/remove/$1";
-$route['show_user_page/(:num)'] = "Dashboards/show_user_page/$1";
-$route['logoff'] = "Dashboards/logoff";
+$route['default_controller'] = "Booklists";
+$route['signin'] = "Booklists/sign_in";
+$route['register'] = "Booklists/register";
+$route['home_page'] = "Booklists/view_home_page";
+
+
+// $route['process_signin'] = "Dashboards/signin_process";
+// $route['user_dashboard'] = "Dashboards/view_user_dash";
+// $route['edit_profile_info'] = "Dashboards/edit_profile_info";
+// $route['profile/(:num)'] = "Dashboards/view_profile/$1";
+// $route['view_user/(:num)'] = "Dashboards/view_user/$1";
+// $route['view_user_admin/(:num)'] = "Dashboards/view_user_admin/$1";
+// $route['edit_user'] = "Dashboards/edit_user";
+// $route['add_user'] = "Dashboards/add_user";
+// $route['remove/(:num)'] = "Dashboards/remove/$1";
+// $route['show_user_page/(:num)'] = "Dashboards/show_user_page/$1";
+// $route['logoff'] = "Dashboards/logoff";
 $route['404_override'] = '';
 
 
