@@ -30,15 +30,31 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `books`.`authors`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `books`.`authors` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `auth_name` VARCHAR(100) NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `books`.`books`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `books`.`books` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(100) NULL,
-  `author` VARCHAR(100) NULL,
   `created_on` DATETIME NULL,
   `updated_on` DATETIME NULL,
-  PRIMARY KEY (`id`))
+  `authors_id` INT NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_books_authors1_idx` (`authors_id` ASC),
+  CONSTRAINT `fk_books_authors1`
+    FOREIGN KEY (`authors_id`)
+    REFERENCES `books`.`authors` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -62,29 +78,6 @@ CREATE TABLE IF NOT EXISTS `books`.`reviews` (
   CONSTRAINT `fk_reviews_books1`
     FOREIGN KEY (`books_id`)
     REFERENCES `books`.`books` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `books`.`users_books`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `books`.`users_books` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `books_id` INT NOT NULL,
-  `users_id` INT NOT NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_users_books_books1_idx` (`books_id` ASC),
-  INDEX `fk_users_books_users1_idx` (`users_id` ASC),
-  CONSTRAINT `fk_users_books_books1`
-    FOREIGN KEY (`books_id`)
-    REFERENCES `books`.`books` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users_books_users1`
-    FOREIGN KEY (`users_id`)
-    REFERENCES `books`.`users` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;

@@ -15,12 +15,12 @@ $login_error = $this->session->flashdata('login_error');
  <body>
  	<div class="container">
  		<h3>Welcome!</h3>
+		<?php if(isset($login_error)){ ?>
+			<p class="warning"><?= $login_error; ?></p>
+		<?php  } ?>
  		<form id="Register" action="/register" method="post">
  			<fieldset>
 				<legend>Register</legend> 
-	                 <?php if(isset($login_error)){ ?>
-                        <p class="warning"><?= $login_error; ?></p>
-                    <?php  } ?>   
                     <?php if(isset($errors['user_name'])){ ?>
                         <p class="warning"><?= $errors['user_name']; ?></p>
                     <?php  } ?>			
@@ -32,7 +32,7 @@ $login_error = $this->session->flashdata('login_error');
 	                <?php if(isset($errors['email'])){ ?>
 	                    <p class="warning"><?= $errors['email']; ?></p>
 	                <?php  } ?>						
-                <label for="email">E-Mail: <input type="text" placeholder="JohnnyS@something.com" name="email" /></label>
+                <label for="email">E-Mail: <input type="text" placeholder="something@something.com" name="email" /></label>
                     <?php if(isset($errors['password'])){ ?>
                         <p class="warning"><?= $errors['password']; ?></p>
                     <?php  } ?>						
@@ -45,7 +45,21 @@ $login_error = $this->session->flashdata('login_error');
 				<input type="submit" value="Register" />
  			</fieldset>
  		</form>
- 		
+ 		<form id="login" action="/signin" method="post">
+ 			<fieldset>
+ 				<legend>Login</legend>
+	                <?php if(isset($errors['email'])){ ?>
+	                    <p class="warning"><?= $errors['email']; ?></p>
+	                <?php  } ?>
+                <label for="signin_email">Email Address: <input type="text" placeholder="something@something.com" name="email" /></label>
+	                <?php if(isset($errors['password'])){ ?>
+	                    <p class="warning"><?= $errors['password']; ?></p>
+	                <?php  } ?>
+                <label for="password">Password: <input type="password" placeholder="********" name="password" /></label>
+                <input type="submit" name="action" value="Login" />
+                </form>
+ 			</fieldset>
+ 		</form>
  	</div>
  </body>
  </html>
